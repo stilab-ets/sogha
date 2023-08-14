@@ -29,8 +29,9 @@ WHERE
             CROSS JOIN UNNEST(tags) flattened_tags
             WHERE LOWER(flattened_tags) = 'github-actions'
         )
-    ); ```
-    
+    );
+```
+
 
 ### Résultat
 
@@ -53,7 +54,9 @@ Pour obtenir le nombre d'occurrences où "GitHub Actions" a été mentionné dan
 SELECT COUNT(post_id)
 FROM `bigquery-public-data.stackoverflow.post_history`
 WHERE creation_date BETWEEN '2018-07-01 00:00:00' AND '2022-06-30 23:59:59'
-AND (LOWER(text) LIKE '%github actions%').
+AND (LOWER(text) LIKE '%github actions%');
+```
+
 
 
 ### Résultat
@@ -80,7 +83,7 @@ SELECT COUNT(*)
 FROM `vital-program-390504.nath.final`
 WHERE creation_date BETWEEN '2018-07-01 00:00:00' AND '2022-06-30 23:59:59'
   AND accepted_answer_id IS NOT NULL;
-
+```
 
 ### Résultat
 
@@ -91,11 +94,11 @@ Après avoir exécuté la requête SQL, nous obtenons le nombre total de **2389*
 Cette analyse nous permet de déterminer le nombre de questions sur Stack Overflow ayant des réponses acceptées entre juillet 2018 et juin 2022. Cela peut nous fournir des informations importantes sur l'engagement de la communauté envers la résolution de problèmes et la qualité des réponses fournies.
 
 
-## Analyse des Questions sans Réponses Acceptées
+# Analyse des Questions sans Réponses Acceptées
 
 Dans cette analyse, nous allons compter le nombre total de questions n'ayant pas de réponse acceptée sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022.
 
-### Requête SQL
+## Requête SQL
 
 Pour obtenir le nombre de questions sans réponse acceptée, la requête SQL suivante peut être utilisée :
 
@@ -104,7 +107,7 @@ SELECT COUNT(*)
 FROM `vital-program-390504.nath.final`
 WHERE creation_date BETWEEN '2018-07-01 00:00:00' AND '2022-06-30 23:59:59'
   AND accepted_answer_id IS NULL;
-
+```
 ### Résultat
 
 Après avoir exécuté la requête SQL, nous obtenons le nombre total de **3760** questions sans réponse acceptée.
@@ -115,11 +118,11 @@ Cette analyse nous permet de déterminer le nombre de questions sur Stack Overfl
 
 
 
-## Analyse des Questions sans Réponses
+# Analyse des Questions sans Réponses
 
 Dans cette analyse, nous allons compter le nombre total de questions qui n'ont aucune réponse sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022.
 
-### Requête SQL
+## Requête SQL
 
 Pour obtenir le nombre de questions sans réponses, la requête SQL suivante peut être utilisée :
 
@@ -128,7 +131,7 @@ SELECT COUNT(*)
 FROM `vital-program-390504.nath.final`
 WHERE creation_date BETWEEN '2018-07-01 00:00:00' AND '2022-06-30 23:59:59'
   AND answer_count = 0 . 
-
+```
 
   #### Résultat
 
@@ -143,7 +146,7 @@ Cette analyse nous permet de déterminer le nombre de questions sur Stack Overfl
 
 Dans cette analyse, nous allons compter le nombre total de questions qui ont au moins une réponse sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022.
 
-### Requête SQL
+## Requête SQL
 
 Pour obtenir le nombre de questions avec au moins une réponse, la requête SQL suivante peut être utilisée :
 
@@ -152,6 +155,7 @@ SELECT COUNT(*)
 FROM `vital-program-390504.nath.final`
 WHERE creation_date BETWEEN '2018-07-01 00:00:00' AND '2022-06-30 23:59:59'
   AND answer_count > 0;
+```
 
   ### Résultat
 
@@ -162,11 +166,11 @@ Après avoir exécuté la requête SQL, nous obtenons le nombre total de **4424*
 Cette analyse nous permet de déterminer le nombre de questions sur Stack Overflow qui ont au moins une réponse entre juillet 2018 et juin 2022. Cela peut nous fournir des informations sur les sujets qui suscitent des discussions actives et des interactions au sein de la communauté des développeurs.
 
 
-## Analyse des Utilisateurs Actifs
+# Analyse des Utilisateurs Actifs
 
 Dans cette analyse, nous allons extraire les informations sur les utilisateurs actifs de Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022. Un utilisateur est considéré comme actif s'il a posé une question ou fourni une réponse pendant cette période.
 
-### Requête SQL
+## Requête SQL
 
 Pour obtenir les informations sur les utilisateurs actifs, la requête SQL suivante peut être utilisée :
 
@@ -183,7 +187,13 @@ FROM (
 LEFT JOIN (
   SELECT parent_id, owner_user_id
   FROM `bigquery-public-data.stackoverflow.posts_answers`
-  WHERE creation_date
+  WHERE creation_date BETWEEN '2018-07-01 00:00:00' AND '2022-06-30 23:59:59'
+) AS a
+ON q.post_id = a.parent_id
+JOIN `bigquery-public-data.stackoverflow.users` AS u
+ON (q.owner_user_id = u.id OR a.owner_user_id = u.id);
+
+```
 
  ### Résultat
 
@@ -197,7 +207,7 @@ Cette analyse nous permet d'identifier les utilisateurs actifs de Stack Overflow
 
 Dans cette analyse, nous allons compter et calculer la proportion des tags les plus courants sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022".
 
-### Requête SQL
+## Requête SQL
 
 Pour obtenir les informations sur les tags les plus courants, la requête SQL suivante peut être utilisée :
 
@@ -228,6 +238,8 @@ SELECT
 FROM TagCounts
 ORDER BY tag_count DESC;
 
+```
+
 ### Résultat
 
 Après avoir exécuté le script SQL, vous obtiendrez une liste des tags les plus courants avec le nombre de mentions (tag_count) ainsi que le pourcentage.
@@ -241,7 +253,7 @@ Cette analyse nous permet de déterminer les tags les plus courants sur Stack Ov
 
 Dans cette analyse, nous allons calculer le nombre moyen de tags par question sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022.
 
-### Requête SQL
+## Requête SQL
 
 Pour calculer le nombre moyen de tags par question, la requête SQL suivante peut être utilisée :
 
@@ -257,6 +269,7 @@ SELECT
   ROUND(AVG(tag_count), 2) AS average_tags_per_question
 FROM TagCounts;
 
+```
 ### Résultat
 
 Après avoir exécuté la requête SQL, vous obtiendrez le nombre moyen de tags par question (3.18), arrondi à deux décimales.
@@ -271,7 +284,7 @@ Cette analyse nous permet de calculer le nombre moyen de tags par question sur S
 
 Dans cette analyse, nous allons calculer le nombre moyen de réponses par question sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022.
 
-### Requête SQL
+## Requête SQL
 
 Pour calculer le nombre moyen de réponses par question, la requête SQL suivante peut être utilisée :
 
@@ -289,11 +302,12 @@ FROM (
   )
   GROUP BY parent_id
 );
+```
 
 ### Résultat
 
 Après avoir exécuté la requête SQL, vous obtiendrez le nombre moyen de réponses par question (1.38), arrondi à deux décimales.
 
-#### Conclusion
+### Conclusion
 
 Cette analyse nous permet de calculer le nombre moyen de réponses par question sur Stack Overflow pendant la période de juillet 2018 à juin 2022. Cela peut nous fournir des informations sur la fréquence des interactions et des discussions autour des questions posées par la communauté des développeurs.
