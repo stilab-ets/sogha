@@ -29,21 +29,14 @@ WHERE
             CROSS JOIN UNNEST(tags) flattened_tags
             WHERE LOWER(flattened_tags) = 'github-actions'
         )
-    );
+    ); ```
+    
 
-    ### Explication de la requête
-
-- `SELECT count(*)`: Nous sélectionnons le nombre total d'enregistrements qui répondent aux critères spécifiés.
-- `FROM bigquery-public-data.stackoverflow.posts_questions`: Nous ciblons la table `posts_questions` de la base de données publique de Stack Overflow.
-- `WHERE ...`: Nous appliquons des filtres pour limiter les résultats aux enregistrements créés entre le 1er juillet 2018 et le 30 juin 2022.
-- `LOWER(title) LIKE '%github actions%' OR LOWER(body) LIKE '%github actions%'`: Nous recherchons le terme "GitHub Actions" (en ignorant la casse) dans le titre ou le corps de la question.
-- `id IN ...`: Nous vérifions si l'ID de la question est dans la sous-requête qui filtre les questions taguées avec "github-actions".
-
-## Résultat
+### Résultat
 
 Le résultat de la requête SQL est le nombre total de questions qui répondent à ces critères, dans notre cas, **6149** questions.
 
-## Conclusion
+### Conclusion
 
 Grâce à cette analyse, nous avons pu compter le nombre de questions liées à "GitHub Actions" posées sur Stack Overflow au cours de la période spécifiée. 
 
