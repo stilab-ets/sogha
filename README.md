@@ -1,3 +1,16 @@
+# Note importante concernant l'exécution des scripts SQL
+
+Dans les requêtes suivantes, nous prendrons en compte la période de notre étude (en fusionnant tous les semestres). Si vous souhaitez obtenir les données pour chaque semestre individuel, il vous suffit de remplacer la date de la période souhaitée dans la condition "creation_date".
+
+### Execution des scripts
+Pour exécuter le script SQL et obtenir les résultats, suivez ces étapes :
+
+- Ouvrez une interface SQL ou un outil de requête compatible avec BigQuery.
+- Copiez la requête SQL ci-dessus et collez-la dans l'interface.
+- Assurez-vous d'être connecté à la base de données publique de BigQuery de Stack Overflow.
+- Après la première requête intitulée "# Analyse des questions Stack Overflow liées à "GitHub Actions"", veillez à enregistrer les résultats en tant que table BigQuery sous le nom "vital-program-390504.nath.final" pour les requêtes ultérieures utilisant cette table. Vous avez la possibilité de nommer la table selon votre préférence, mais assurez-vous de faire les modifications nécessaires dans les requêtes qui font référence à cette table.
+- Exécutez la requête SQL.
+
 # Analyse des questions Stack Overflow liées à "GitHub Actions"
 
 Dans cette analyse, nous allons compter le nombre total de questions posées sur Stack Overflow entre le 1er juillet 2018 et le 30 juin 2022, qui sont liées à "GitHub Actions". Pour ce faire, nous allons effectuer une requête SQL sur la base de données publique de BigQuery de Stack Overflow.
