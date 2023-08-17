@@ -662,12 +662,6 @@ vis
 lfrom gensim.models.ldamodel import LdaModel
 from gensim import corpora
 
-# Assuming you have already trained your LDA model and loaded your corpus and id2word dictionary
-# lda_model = ...
-
-# Assuming you have a corpus of documents
-# corpus = ...
-
 # Get the number of topics from the LDA model
 num_topics = lda_model.num_topics
 
@@ -696,8 +690,6 @@ from gensim import corpora
 with open('nath.json', 'r', encoding='utf-8') as json_file:
     data_list = json.load(json_file)
 
-# Step 2: Assuming you have already trained your LDA model 'lda_model' and have your corpus available.
-# (Please ensure you have the 'lda_model' and 'corpus' variables from your previous code.)
 
 # Step 3: Associate topics with documents and find the dominant topic for each document
 doc_topics = [lda_model.get_document_topics(doc) for doc in corpus]
@@ -763,8 +755,6 @@ for topic_id in range(lda_model.num_topics):
 with open('nath.json', 'r', encoding='utf-8') as json_file:
     data_list = json.load(json_file)
 
-# Step 2: Assuming you have already trained your LDA model 'lda_model' and have your corpus available.
-# (Please ensure you have the 'lda_model' and 'corpus' variables from your previous code.)
 
 # Step 3: Associate topics with documents and find the dominant topic for each document
 doc_topics = [lda_model.get_document_topics(doc) for doc in corpus]
@@ -831,8 +821,6 @@ from gensim import corpora
 with open('nath.json', 'r', encoding='utf-8') as json_file:
     data_list = json.load(json_file)
 
-# Step 2: Assuming you have already trained your LDA model 'lda_model' and have your corpus available.
-# (Please ensure you have the 'lda_model' and 'corpus' variables from your previous code.)
 
 # Step 3: Associate topics with documents and find the dominant topic for each document
 doc_topics = [lda_model.get_document_topics(doc) for doc in corpus]
