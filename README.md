@@ -433,6 +433,9 @@ data = load_data("nath.json")
 print (data[0])
 ```
 
+![Chargement et Affichage des Données Textuelles Prétraitées depuis le Fichier 'nath.json']
+
+
 ## Lemmatisation de Textes en Utilisant spaCy pour le Traitement Automatique du Langage 
 
 ```python
@@ -860,3 +863,5 @@ for topic_id in range(lda_model.num_topics):
     print()
 
 ```
+
+[def]: images/r1.PNG
