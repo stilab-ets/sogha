@@ -432,7 +432,7 @@ data = load_data("nath.json")
 
 print (data[0])
 ```
-
+### Output
 ![Chargement et Affichage des Données Textuelles Prétraitées depuis le Fichier 'nath.json'](images/r1.PNG)
 
 
@@ -459,6 +459,9 @@ lemmatized_texts = lemmatization(data)
 print (lemmatized_texts[0])
 ```
 
+### Output
+![Lemmatisation de Textes en Utilisant spaCy pour le Traitement Automatique du Langage ](images/r2.PNG)
+
 ## Extraction de Mots à partir de Textes Lemmatisés en Utilisant gensim pour le Traitement Automatique du Langage Naturel
 
 ```python
@@ -474,6 +477,9 @@ data_words = gen_words(lemmatized_texts)
 
 print (data_words[0])
 ```
+### Output
+![Extraction de Mots à partir de Textes Lemmatisés en Utilisant gensim pour le Traitement Automatique du Langage Naturel ](images/r3.PNG)
+
 
 ## Génération de Bigrammes et Trigrammes à partir de Mots Extraits, Utilisation de gensim pour le Traitement Automatique du Langage Naturel
 
@@ -495,6 +501,9 @@ data_bigrams_trigrams = make_trigram(data_bigrams)
 
 print(data_bigrams_trigrams[0])
 ```
+
+### Output
+![Génération de Bigrammes et Trigrammes à partir de Mots Extraits, Utilisation de gensim pour le Traitement Automatique du Langage Naturel ](images/r4.PNG)
 
 ## Création d'un Modèle TF-IDF pour le Traitement de Données Textuelles, Utilisation de gensim
 
@@ -529,6 +538,9 @@ for i in range(0, len(corpus)):
     
 ```
 
+### Output
+![Création d'un Modèle TF-IDF pour le Traitement de Données Textuelles, Utilisation de gensim ](images/r5.PNG)
+
 ## Calcul de la Taille du Corpus Textuel à partir d'un Fichier JSON dans le Contexte du Traitement Automatique du Langage Naturel
 
 ```python
@@ -557,6 +569,9 @@ print(f"Number of documents in the corpus: {num_documents}")
 print(f"Total number of tokens in the corpus: {total_tokens}")
 
 ```
+
+### Output
+![Calcul de la Taille du Corpus Textuel à partir d'un Fichier JSON dans le Contexte du Traitement Automatique du Langage Naturel ](images/r6.PNG)
 
 ## Utilisation de l'algorithme génétique pour trouver les parametres optimals
 
@@ -634,6 +649,9 @@ print("Overall Execution Time: {:.2f} seconds".format(elapsed_time))
 
 
 ```
+### Output
+![Utilisation de l'algorithme génétique pour trouver les parametres optimals ](images/r7.PNG)
+
 ## Création d'un Modèle de Topic Modeling LDA (Latent Dirichlet Allocation)
 
 ```python
@@ -659,6 +677,9 @@ vis = pyLDAvis.gensim.prepare(lda_model, corpus, id2word, mds="mmds", R=10)
 vis
 ```
 
+### Output
+![Visualisation des clusters ](images/r12.PNG)
+
 ## Distribution de documents entre les topics identifiés
 
 ```python
@@ -681,6 +702,9 @@ for topic, doc_count in enumerate(topic_doc_count):
     print(f"Topic {topic}: Number of Documents: {doc_count}")
 
 ```
+
+### Output
+![Distribution de documents entre les topics identifiés ](images/r8.PNG)
 
 ## Utilisation de LDA pour trouver la moyenne des favori, vue et score de chaque sujet.
 
@@ -751,6 +775,9 @@ for topic_id in range(lda_model.num_topics):
 
 ```
 
+### Output
+![Utilisation de LDA pour trouver la moyenne des favori, vue et score de chaque sujet ](images/r9.PNG)
+
 ## Utilisation de LDA pour trouver la moyenne des favori, vue et score de toutes les questions.
 
 ```python
@@ -813,6 +840,9 @@ print()
 
 ```
 
+### Output
+![Utilisation de LDA pour trouver la moyenne des favori, vue et score de toutes les questions](images/r10.PNG)
+
 ## Utilisation de LDA pour trouver le nombre de question sans reponse et sans reponse accepté pour chacun de sujets.
 
 ```python
@@ -863,3 +893,6 @@ for topic_id in range(lda_model.num_topics):
     print()
 
 ```
+
+### Output
+![Utilisation de LDA pour trouver le nombre de question sans reponse et sans reponse accepté pour chacun de sujets](images/r11.PNG)
